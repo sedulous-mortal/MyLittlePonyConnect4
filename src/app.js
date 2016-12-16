@@ -9,17 +9,6 @@ while (numSQ % 7 != 0) {
 alert(`Great, I'll make a board with ${numSQ} squares!`);
 */
 let numSQ = 42;
-//board-generator function
-const boardGenerator = () => {
-    //define the board
-    let boardDiv = $('<div \>', {
-        id: 'board'
-    });
-    //create all the cells
-    cellCreator();
-}
-
-boardGenerator();
+//create all the cells
+cellCreator();
 console.log($('#board'));
-
-//onclick handler for all cells

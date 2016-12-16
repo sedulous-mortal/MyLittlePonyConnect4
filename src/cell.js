@@ -12,9 +12,10 @@
 class Cell {
     constructor(j) {
         this.id = j;
+        this.class = 'cell';
     }
 
     skinCell() {
-        return $('<div \>').attr('id', this.id);
+        return $('<div \>').attr('id', this.id).attr('class', this.class);
     }
 }

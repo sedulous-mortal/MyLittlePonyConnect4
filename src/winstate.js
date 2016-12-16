@@ -10,7 +10,7 @@ let winCheck = () => {
         //for the number of rows
         for (let r = 1; r < (numSQ / 7); r++) {
             //while all the cells do not equate to '', do the following:
-            while ($('divs').isEmptyObject) {
+            while ($('div').isEmptyObject) {
                 //check for down diagonals
                 if ($('div').hasClass(`col${c} row${r}`).innerHTML == $('div').hasClass(`col${c+1} row${r+1}`).innerHTML &&
                     $('div').hasClass(`col${c+1} row${r+1}`).innerHTML == $('div').hasClass(`col${c+2} row${r+2}`).innerHTML &&
