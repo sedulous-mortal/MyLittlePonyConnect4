@@ -1,8 +1,20 @@
+//tried it this way but it didn't work out
+//class Cell extends HTMLDivElement {
+//constructor(j) {
+//super();
+//} //end constructor
+//put any methods for cells here
+//The behavior you define in createdCB occurs when the element is registered.
+//    createdCallback() {
+//        this.id = j;
+//    }
+//} //end cell class
 class Cell {
     constructor(j) {
-            this.id = j;
-            let cell = $('<div \>');
-            $('cell').attr('id', this.id);
-        } //end constructor
-        //put any methods for cells here
-} //end cell class
+        this.id = j;
+    }
+
+    skinCell() {
+        return $('<div \>').attr('id', this.id);
+    }
+}
