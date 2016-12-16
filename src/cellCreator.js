@@ -1,16 +1,14 @@
 let players = ['rainbowDash', 'flutterShy'];
 let currentPlayer = players[0];
 
-
-
-let takeTurn = () => {
+let takeTurn = (e) => {
     let target = e.target;
-    console.log(e.target.id);
+    console.log(e.target);
     if (currentPlayer == 'rainbowDash') {
-        $(target).innerHTML = '<p>DASH</p>';
+        (e.target).innerHTML = 'DASH';
         currentPlayer = players[1];
     } else if (currentPlayer == players[1]) {
-        $(target).innerHTML = '<p>SHY</p>';
+        (e.target).innerHTML = 'SHY';
         currentPlayer = players[0];
     }
     winCheck();
@@ -22,8 +20,8 @@ let cellCreator = () => {
         let newCell = new Cell(j);
         $(newCell.skinCell(j)).appendTo($('#board'));
         //onclick handler for all cells
-        $(`#${j}`).on('click', function () {
-            takeTurn();
+        $(`#${j}`).on('click', function (e) {
+            takeTurn(e);
         });
         //assign column classes
         if (j % 7 == 1) {
