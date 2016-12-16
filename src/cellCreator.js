@@ -5,10 +5,10 @@ let takeTurn = (e) => {
     let target = e.target;
     console.log(e.target);
     if (currentPlayer == 'rainbowDash') {
-        (e.target).innerHTML = 'DASH';
+        (e.target).innerHTML = '<img class="piece" src="assets/DASH.png" \>';
         currentPlayer = players[1];
     } else if (currentPlayer == players[1]) {
-        (e.target).innerHTML = 'SHY';
+        (e.target).innerHTML = '<img class="piece" src="assets/SHY.png" \>';
         currentPlayer = players[0];
     }
     winCheck();

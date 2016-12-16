@@ -5,7 +5,7 @@ let winCount = 0;
 let winCheck = () => {
     //nested for loop to check every possible state
     //for the number of columns
-    for (let c = 1; c < 8; c++) {
+    for (let c = 1; c < (numSQ / 6); c++) {
         console.log("Checking for winstate");
         //for the number of rows
         for (let r = 1; r < (numSQ / 7); r++) {
