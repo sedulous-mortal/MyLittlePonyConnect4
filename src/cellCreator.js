@@ -1,33 +1,48 @@
 let players = ['rainbowDash', 'flutterShy'];
 let currentPlayer = players[0];
 
+let fillMe = (cell) => {
+    if (currentPlayer == 'rainbowDash') {
+        cell.innerHTML = '<img class="piece" src="assets/DASH.png" \>';
+        currentPlayer = players[1];
+    } else if (currentPlayer == players[1]) {
+        cell.innerHTML = '<img class="piece" src="assets/SHY.png" \>';
+        currentPlayer = players[0];
+    }
+}
+
 let takeTurn = (e) => {
     let target = e.target;
     console.log(e.target);
     let myID = e.target.getAttribute('id');
     let botRow = Number(myID) + 35;
+    //console.log(typeof $(`#${botRow}`)); --> "object"
+    console.log($(`#${botRow}`));
     if (botRow <= numSQ) {
-        if ($(`#${botRow}`).innerHTML == undefined) {
-            alert('I am empty!');
-            //neither of these two work at targeting the desired div:
-            //$('<div>').has('id', `${botRow}`).innerHTML = "O";
-            //$(`#botRow`).innerHTML = "O";
-            ($('div').get(botRow).innerHTML = "O");
+        if ($(`#${botRow}`).hasClass('clear')) {
+            $(`#${botRow}`).removeClass('clear');
+            fillMe($('div').get(botRow));
+        } else if ($(`#${botRow-7}`).hasClass('clear')) {
+            $(`#${botRow-7}`).removeClass('clear');
+            fillMe($('div').get(botRow - 7));
+        } else if ($(`#${botRow-14}`).hasClass('clear')) {
+            $(`#${botRow-14}`).removeClass('clear');
+            fillMe($('div').get(botRow - 14));
+        } else if ($(`#${botRow-21}`).hasClass('clear')) {
+            $(`#${botRow-21}`).removeClass('clear');
+            fillMe($('div').get(botRow - 21));
+        } else if ($(`#${botRow-28}`).hasClass('clear')) {
+            $(`#${botRow-28}`).removeClass('clear');
+            fillMe($('div').get(botRow - 28));
+        } else if ($(`#${botRow-35}`).hasClass('clear')) {
+            $(`#${botRow-35}`).removeClass('clear');
+            fillMe($('div').get(botRow - 35));
         }
-    } else if (botRow <= (numSQ - 7)) {
-        if ($(`#${botRow}`).innerHTML == undefined) {
-            ($('div').get(botRow - 7).innerHTML = "O");
-        }
-    }
-    //$(`#${$('e.target').attr('id')}`))
 
-    //    if (currentPlayer == 'rainbowDash') {
-    //        (e.target).innerHTML = '<img class="piece" src="assets/DASH.png" \>';
-    //        currentPlayer = players[1];
-    //    } else if (currentPlayer == players[1]) {
-    //        (e.target).innerHTML = '<img class="piece" src="assets/SHY.png" \>';
-    //        currentPlayer = players[0];
-    //    }
+    }
+
+
+    //good way to target stuff: $(`#${$('e.target').attr('id')}`))
     winCheck();
 };
 
@@ -40,6 +55,8 @@ let cellCreator = () => {
         $(`#${j}`).on('click', function (e) {
             takeTurn(e);
         });
+        //assign a clear class to help with on-click fills
+        $(`#${j}`).addClass('clear');
         //assign column classes
         if (j % 7 == 1) {
             $(`#${j}`).addClass('col1');
