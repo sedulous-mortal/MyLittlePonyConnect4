@@ -11,4 +11,3 @@ alert(`Great, I'll make a board with ${numSQ} squares!`);
 let numSQ = 42;
 //create all the cells
 cellCreator();
-console.log($('#board'));

@@ -4,13 +4,30 @@ let currentPlayer = players[0];
 let takeTurn = (e) => {
     let target = e.target;
     console.log(e.target);
-    if (currentPlayer == 'rainbowDash') {
-        (e.target).innerHTML = '<img class="piece" src="assets/DASH.png" \>';
-        currentPlayer = players[1];
-    } else if (currentPlayer == players[1]) {
-        (e.target).innerHTML = '<img class="piece" src="assets/SHY.png" \>';
-        currentPlayer = players[0];
+    let myID = e.target.getAttribute('id');
+    let botRow = Number(myID) + 35;
+    if (botRow <= numSQ) {
+        if ($(`#${botRow}`).innerHTML == undefined) {
+            alert('I am empty!');
+            //neither of these two work at targeting the desired div:
+            //$('<div>').has('id', `${botRow}`).innerHTML = "O";
+            //$(`#botRow`).innerHTML = "O";
+            ($('div').get(botRow).innerHTML = "O");
+        }
+    } else if (botRow <= (numSQ - 7)) {
+        if ($(`#${botRow}`).innerHTML == undefined) {
+            ($('div').get(botRow - 7).innerHTML = "O");
+        }
     }
+    //$(`#${$('e.target').attr('id')}`))
+
+    //    if (currentPlayer == 'rainbowDash') {
+    //        (e.target).innerHTML = '<img class="piece" src="assets/DASH.png" \>';
+    //        currentPlayer = players[1];
+    //    } else if (currentPlayer == players[1]) {
+    //        (e.target).innerHTML = '<img class="piece" src="assets/SHY.png" \>';
+    //        currentPlayer = players[0];
+    //    }
     winCheck();
 };
 
@@ -46,7 +63,6 @@ let cellCreator = () => {
             $(`#${j}`).addClass('col7');
         }
 
-
         //add row classes
         if (j > 0 && j < 8) {
             $(`#${j}`).addClass('row1');
@@ -68,4 +84,4 @@ let cellCreator = () => {
         }
         // add more if statements here for rows up to 10 in fancy version
     } //end j for loop
-};
+}; //end cell creator function
