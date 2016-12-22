@@ -13,12 +13,17 @@ let fillMe = (cell) => {
 
 let takeTurn = (e) => {
     let target = e.target;
-    console.log(e.target);
+    console.log("this is the event target:", e.target);
     let myID = e.target.getAttribute('id');
     let botRow = Number(myID) + 35;
-    //console.log(typeof $(`#${botRow}`)); --> "object"
-    console.log($(`#${botRow}`));
-    if (botRow <= numSQ) {
+    if ($(`#${botRow}`).hasClass('clear') === false) {
+        console.log(true);
+        //why is this if statement never logging to console
+        //or evaluating to true?
+        if (botRow <= numSQ && $(`#${botRow}`).hasClass('clear') === false) {
+            //something about this part is wonky:
+
+        }
         if ($(`#${botRow}`).hasClass('clear')) {
             $(`#${botRow}`).removeClass('clear');
             fillMe($('div').get(botRow));
@@ -38,11 +43,34 @@ let takeTurn = (e) => {
             $(`#${botRow-35}`).removeClass('clear');
             fillMe($('div').get(botRow - 35));
         }
-
+        //I don't know why I can't get the last column to behave as the others do.
+        //else {
+        //            let botRow = Number(myID) + 35;
+        //
+        //            if ($(`#${botRow}`).hasClass('clear')) {
+        //                $(`#${botRow}`).removeClass('clear');
+        //                fillMe($('div').get(botRow));
+        //            } else if ($(`#${botRow-7}`).hasClass('clear')) {
+        //                $(`#${botRow-7}`).removeClass('clear');
+        //                fillMe($('div').get(botRow - 7));
+        //            } else if ($(`#${botRow-14}`).hasClass('clear')) {
+        //                $(`#${botRow-14}`).removeClass('clear');
+        //                fillMe($('div').get(botRow - 14));
+        //            } else if ($(`#${botRow-21}`).hasClass('clear')) {
+        //                $(`#${botRow-21}`).removeClass('clear');
+        //                fillMe($('div').get(botRow - 21));
+        //            } else if ($(`#${botRow-28}`).hasClass('clear')) {
+        //                $(`#${botRow-28}`).removeClass('clear');
+        //                fillMe($('div').get(botRow - 28));
+        //            } else if ($(`#${botRow-35}`).hasClass('clear')) {
+        //                $(`#${botRow-35}`).removeClass('clear');
+        //                fillMe($('div').get(botRow - 35));
+        //            } else if ($(`#${botRow-42}`).hasClass('clear')) {
+        //                $(`#${botRow-42}`).removeClass('clear');
+        //                fillMe($('div').get(botRow - 42));
+        //            }
+        //        }
     }
-
-
-    //good way to target stuff: $(`#${$('e.target').attr('id')}`))
     winCheck();
 };
 

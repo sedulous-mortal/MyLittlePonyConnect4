@@ -5,9 +5,19 @@ body {
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 600;
     padding: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 3px;
+}
+
+.instructions {
+    margin-bottom: 10px;
 }
 
 .cell {
@@ -19,7 +29,7 @@ h1 {
 
 #board {
     margin: 0 auto;
-    width: 770px;
+    width: 800px;
 }
 
 .piece {
@@ -27,4 +37,5 @@ h1 {
     height: 90px;
     border-radius: 100%;
     background-color: red;
+    margin: 5px;
 }
